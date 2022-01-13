@@ -8,11 +8,39 @@
 
 ## Setup
 
-Run following command to create first user after migrating database.
+1. Check if you have ruby installed:
+    ```
+    ruby --version
+    ```
+    If not, install [ruby](https://www.ruby-lang.org/en/documentation/installation/).
 
-```
-rake db:seed
-```
+2. Install rails and all other dependencies:
+    ```
+    bundle install
+    bin/yarn install
+    ```
 
-Email: `johndoe@example.com`
-Password: `password`
+3. Migrate database"
+   
+    ```
+    bin/rails db:migrate
+    ```
+
+4. Run following command to create first user after migrating database.
+
+    ```
+    rake db:seed
+    ```
+
+    Email: `johndoe@example.com`
+    Password: `password`
+
+
+4. Run the rails app"
+
+    ```
+    bin/rails server
+    ```
+
+
+
