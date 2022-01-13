@@ -11,11 +11,9 @@ class UsersController < ApplicationController
             render('new')
         
         else
-            flash.now[:success] = 'New account created'
             user = { name: params[:users][:name], email: params[:users][:email].downcase, password: params[:users][:password] }
             sign_up(user)
-            render('new')
-            # redirect_to(login_path)
+            redirect_to(login_path)
         end
     end
 
