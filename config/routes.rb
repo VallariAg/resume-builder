@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   resources :educations , only: [:new]
   resources :experiences , only: [:new]
   resources :projects , only: [:new]
+
+  # catch all other routes 
+  get    '*path'  => redirect("/")
 end
