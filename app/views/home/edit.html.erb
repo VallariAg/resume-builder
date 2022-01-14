@@ -11,9 +11,13 @@
         <%= render 'shared/edit_section', title: "Profile details" do %>
             <%= f.text_field :name, value: @profile.name || current_user.name, placeholder: "Name" %><br/>
             <div class="flex items-center my-4">
-                <%= image_tag gravatar_url_for(current_user), 
+                <%= f.file_field :avatar %><br/>
+                <% if @profile.avatar.attached? %>
+                <%= image_tag "#{url_for(@profile.avatar)}", 
                     id: "image-preview", style:"max-width:200px"
                 %>
+                
+                <%end%>
             </div>
             <%= f.text_field :job_title, value: @profile.job_title, placeholder: "Job title" %><br/>
             <%= f.text_field :total_experience, value: @profile.total_experience, placeholder: "Total experience" %><br/>
