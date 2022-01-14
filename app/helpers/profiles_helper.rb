@@ -15,11 +15,11 @@ module ProfilesHelper
         params
     end
     
-    def fetch_avatar(profile)
+    def avatar_url(profile)
         if profile.avatar.attached?
-          url_for(profile.avatar)
+            url_for(profile.avatar)
         else
-          'https://i.stack.imgur.com/l60Hf.png'
+            image_path("download.png") # default image from the assets
         end
     end
 
