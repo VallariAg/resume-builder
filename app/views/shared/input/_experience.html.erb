@@ -4,5 +4,11 @@
     <%= experience.date_field :start, value: experience.object.start, placeholder: "Start date" %><br/>
     <%= experience.date_field :end, value: experience.object.end, placeholder: "End date" %><br/>
     <%= experience.text_area :description, value: experience.object.description, placeholder: "Description" %><br/>
+    <%= render 'shared/edit_section', title: "Projects" do %>
+        <%= experience.fields_for :projects do |project| %>
+            <%= render 'shared/input/project', project: project %>
+        <% end %><br />
+        <%= render 'shared/input/buttons/add', label: "+ Add project", path: "/projects/new/#{experience.object.id}" %>
+    <% end %>
     <%= render 'shared/input/buttons/delete', type: experience %>
 <% end %>
