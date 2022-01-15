@@ -17,7 +17,10 @@ module ProfilesHelper
     
     def avatar_url(profile)
         if profile.avatar.attached?
-            url_for(profile.avatar)
+            key = profile.avatar.blob.key
+            file = MiniMagick::Image.open(profile.avatar_url)
+            save_to_local = file.write  "app/assets/images/#{key}"
+            image_path(key)
         else
             image_path("download.png") # default image from the assets
         end

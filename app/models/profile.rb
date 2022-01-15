@@ -7,6 +7,10 @@ class Profile < ApplicationRecord
 
     belongs_to :user
 
+    def avatar_url
+        ActiveStorage::Blob.service.path_for(avatar.key)
+    end
+
     def reject_education_create(education)
         education[:degree].blank? or education[:school].blank? or education[:start].blank? or education[:end].blank?
     end
