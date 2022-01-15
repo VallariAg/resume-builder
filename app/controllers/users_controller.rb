@@ -12,8 +12,12 @@ class UsersController < ApplicationController
         
         else
             user = { name: params[:users][:name], email: params[:users][:email].downcase, password: params[:users][:password] }
-            sign_up(user)
-            redirect_to(login_path)
+            if sign_up(user)
+                redirect_to(login_path)
+            else 
+                flash[:danger] = "Failed to create user. Make sure the password is more than 8 characters."
+                render('new')
+            end
         end
     end
 

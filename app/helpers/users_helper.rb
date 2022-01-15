@@ -7,7 +7,10 @@ module UsersHelper
         
         if new_user.save
             new_user.profile.educations.create
+            return new_user
         end
     end
 
+
+    
 end
